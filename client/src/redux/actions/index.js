@@ -1,4 +1,4 @@
-import { GET_ALL_RECIPES, GET_RECIPE } from "../constant";
+import { FILTER_BY_PUNTUATION, FILTER_BY_TITLE, GET_ALL_RECIPES, GET_RECIPE } from "../constant";
 import axios from 'axios'
 
 export function getAllRecipes() {
@@ -19,4 +19,18 @@ export function getRecipe(id){
             payload: json.data
         })
     }
+}
+
+export function filterByTitle(payload){
+    return({
+        type: FILTER_BY_TITLE,
+        payload
+    })
+}
+
+export function filterByPuntuation(payload){
+    return ({
+        type: FILTER_BY_PUNTUATION,
+        payload
+    })
 }

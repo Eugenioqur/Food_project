@@ -14,21 +14,21 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 const getApiInfo = async()=>{
-    const recipes = await axios.get(`https:/https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.API_KEY}&addRecipeInformation=true&number=100`);
- 
-    const recipe = await recipes.data.results.map(el =>{
-        return{
-            id: el.id,
-            title: el.title,
-            summary: el.summary,
-            spoonacularScore: el.spoonacularScore,
-            healthScore: el.healthScore,
-            analyzedInstructions: el.analyzedInstructions.map(e =>e),
-            diets: el.diets.map(e => e),
-            image: el.image
-        }
-    })
-    return recipe;
+        const recipes = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.API_KEY}&addRecipeInformation=true&number=100`);
+     
+        const recipe = await recipes.data.results.map(el =>{
+            return{
+                id: el.id,
+                title: el.title,
+                summary: el.summary,
+                spoonacularScore: el.spoonacularScore,
+                healthScore: el.healthScore,
+                analyzedInstructions: el.analyzedInstructions.map(e =>e),
+                diets: el.diets.map(e => e),
+                image: el.image
+            }
+        })
+        return recipe;
 }
 
 const getDbInfo = async()=>{
