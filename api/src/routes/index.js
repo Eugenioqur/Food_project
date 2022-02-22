@@ -77,4 +77,19 @@ router.get('/recipes/:idReceta', async(req,res)=>{
         res.status(404).json({msg:'id is not valid'})
     }
 })
+
+router.get('/types', async(req,res)=>{
+    const allInfo = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.API_KEY}&addRecipeInformation=true&number=100`)
+    const types = allInfo.data.results.flatMap(e => e.diets)
+    await types.forEach(e=>{
+        if(e){
+             Diet.findOrCreate({
+                where: {title: e}
+            })
+        }
+    })
+    const allTypes = await Diet.findAll()
+    res.send(allTypes)
+})
+
 module.exports = router;

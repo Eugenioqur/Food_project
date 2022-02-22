@@ -1,4 +1,4 @@
-import { FILTER_BY_PUNTUATION, FILTER_BY_TITLE, GET_ALL_RECIPES, GET_RECIPE } from "../constant";
+import { FILTER_BY_PUNTUATION, FILTER_BY_TITLE, GET_ALL_RECIPES, GET_RECIPE, GET_SEARCH_RECIPE } from "../constant";
 
 const initialState={
     recipes:[],
@@ -62,6 +62,11 @@ const rootReducer= (state=initialState,action)=>{
             return{
                 ...state,
                 recipes: sortedArrPuntuation
+            }
+        case GET_SEARCH_RECIPE:
+            return{
+                ...state,
+                recipes: action.payload
             }
         default:
             return state
