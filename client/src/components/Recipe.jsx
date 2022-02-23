@@ -24,7 +24,7 @@ useEffect(()=>{
             <h1>{title}</h1>
             <img src={image} alt="no hay foto bro" />
             <p>{diets}</p>
-            <p>{summary}</p>
+            <div dangerouslySetInnerHTML={{__html: summary}}/>
             <p>{spoonacularScore}</p>
             <p>{healthScore}</p>
             <Link to='/home'><button>Home</button></Link>

@@ -3,7 +3,7 @@ import { useState,useEffect } from "react";
 import { useDispatch,useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
 
-import { filterByPuntuation, filterByTitle, getAllRecipes } from "../redux/actions";
+import { filterByPuntuation, filterByTitle, getAllRecipes ,currentPage, currentFilter} from "../redux/actions";
 import Card from "./Card";
 import Paginated from "./Paginated";
 import NavBar from "./NavBar";
@@ -13,32 +13,37 @@ export default function Home(){
 const dispatch = useDispatch();
 const allRecipes = useSelector((state)=>state.recipes)
 
-const[currentPage,setCurrentPage] = useState(1)
+const page= useSelector((state)=>state.page)
+//const[currentPage,setCurrentPage] = useState(1)
 const [recipesPerPage,setRecipesPerPage] = useState(9)
-const indexOfLastRecipe = currentPage * recipesPerPage 
+const indexOfLastRecipe = page * recipesPerPage 
 const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage
 const currentRecipes = allRecipes.slice(indexOfFirstRecipe,indexOfLastRecipe)
 
-const [filter,setFiter] = useState('');
+//const [filter,setFiter] = useState('');
 
     useEffect(()=>{
         dispatch(getAllRecipes());
     },[dispatch])
 
    const pag = (pageNumber) =>{
-       setCurrentPage(pageNumber)
+        dispatch(currentPage(pageNumber))
    }
 
    function handleSortTitle(e){
        dispatch(filterByTitle(e.target.value))
-       setFiter(e.target.value)
-       setCurrentPage(1)
+       dispatch(currentFilter(e.target.value))
+    //   setFiter(e.target.value)
+     //  dispatch(currentPage(1))
+     //  setCurrentPage(1)
    }
 
    function handleSortPuntuation(e){
     dispatch(filterByPuntuation(e.target.value))
-    setFiter(e.target.value)
-    setCurrentPage(1)
+    dispatch(currentFilter(e.target.value))
+   // setFiter(e.target.value)
+    //dispatch(currentPage(1))
+    //setCurrentPage(1)
    }
 
     return(

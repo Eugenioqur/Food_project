@@ -72,7 +72,6 @@ router.get('/recipes/:idReceta', async(req,res)=>{
     idFound = await recipes.find(e => e.id == id)
     if(idFound){
         res.status(200).send(idFound)
-        console.log('id=',id)
     }else{
         res.status(404).json({msg:'id is not valid'})
     }

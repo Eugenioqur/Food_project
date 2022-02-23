@@ -1,4 +1,4 @@
-import { FILTER_BY_PUNTUATION, FILTER_BY_TITLE, GET_ALL_RECIPES, GET_RECIPE, GET_SEARCH_RECIPE } from "../constant";
+import { CURRENT_FILTER, CURRENT_PAGE, FILTER_BY_DIET, FILTER_BY_PUNTUATION, FILTER_BY_TITLE, GET_ALL_DIETS, GET_ALL_RECIPES, GET_RECIPE, GET_SEARCH_RECIPE } from "../constant";
 import axios from 'axios'
 
 export function getAllRecipes() {
@@ -6,6 +6,16 @@ export function getAllRecipes() {
         let json =await axios('http://localhost:3001/recipes',{});
         return dipatch({
             type:GET_ALL_RECIPES,
+            payload: json.data
+        })
+    }
+}
+
+export function getAllDiets() {
+    return async function(dispatch){
+        let json = await axios('http://localhost:3001/types',{});
+        return dispatch({
+            type:GET_ALL_DIETS,
             payload: json.data
         })
     }
@@ -48,4 +58,25 @@ export function getRecipeSearch(search){
         }
     }
     
+}
+
+export function filterByDiet(payload){
+    return {
+        type: FILTER_BY_DIET,
+        payload
+    }
+}
+
+export function currentPage(payload){
+    return{
+        type: CURRENT_PAGE,
+        payload
+    }
+}
+
+export function currentFilter(payload){
+    return{
+        type:CURRENT_FILTER,
+        payload
+    }
 }

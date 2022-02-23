@@ -5,7 +5,7 @@ export default function Card({title,image,diets}){
         <div>
             <h1>{title}</h1>
             <img src={image} alt="no hay foto bro" />
-            <p>{diets}</p>
+            <p>{diets.map(e=> e+', ')}</p>
         </div>
     )
 }
