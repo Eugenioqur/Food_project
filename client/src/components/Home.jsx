@@ -3,7 +3,7 @@ import { useState,useEffect } from "react";
 import { useDispatch,useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
 
-import { filterByPuntuation, filterByTitle, getAllRecipes ,currentPage, currentFilter} from "../redux/actions";
+import {getAllRecipes ,currentPage} from "../redux/actions";
 import Card from "./Card";
 import Paginated from "./Paginated";
 import NavBar from "./NavBar";
@@ -15,7 +15,6 @@ const allRecipes = useSelector((state)=>state.recipes)
 const filter = useSelector((state)=>state.filter)
 
 const page= useSelector((state)=>state.page)
-//const[currentPage,setCurrentPage] = useState(1)
 const [recipesPerPage,setRecipesPerPage] = useState(9)
 const indexOfLastRecipe = page * recipesPerPage 
 const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage

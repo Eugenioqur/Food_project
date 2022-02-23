@@ -1,4 +1,4 @@
-import { CURRENT_FILTER, CURRENT_PAGE, FILTER_SORT, FILTER_BY_DIET, GET_ALL_DIETS, GET_ALL_RECIPES, GET_RECIPE, GET_SEARCH_RECIPE } from "../constant";
+import { CURRENT_FILTER, CURRENT_PAGE, FILTER_SORT, FILTER_BY_DIET, GET_ALL_DIETS, GET_ALL_RECIPES, GET_RECIPE, GET_SEARCH_RECIPE, CLEAN_RECIPE } from "../constant";
 import axios from 'axios'
 
 export function getAllRecipes() {
@@ -73,5 +73,11 @@ export function currentFilter(payload){
     return{
         type:CURRENT_FILTER,
         payload
+    }
+}
+
+export function cleanRecipe(){
+    return{
+        type:CLEAN_RECIPE
     }
 }
