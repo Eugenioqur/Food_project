@@ -1,12 +1,12 @@
-import { CURRENT_FILTER, CURRENT_PAGE, FILTER_BY_DIET, FILTER_BY_PUNTUATION, FILTER_BY_TITLE, GET_ALL_DIETS, GET_ALL_RECIPES, GET_RECIPE, GET_SEARCH_RECIPE } from "../constant";
+import { CURRENT_FILTER, CURRENT_PAGE, FILTER_BY_DIET, FILTER_BY_PUNTUATION, FILTER_BY_TITLE, FILTER_SORT, GET_ALL_DIETS, GET_ALL_RECIPES, GET_RECIPE, GET_SEARCH_RECIPE } from "../constant";
 
 const initialState={
     recipes:[],
     allRecipes:[],
     recipe:[],
     diets:[],
+    filter:'',
     page: 1,
-    filter:''
 }
 
 const rootReducer= (state=initialState,action)=>{
@@ -30,7 +30,7 @@ const rootReducer= (state=initialState,action)=>{
                 recipe: action.payload
             }
 
-        case FILTER_BY_TITLE:
+        case FILTER_SORT:
             let sortedArrTitle = action.payload === 'az'? state.allRecipes.sort(function(a,b){
                 if( a.title > b.title){
                     return 1
@@ -47,15 +47,7 @@ const rootReducer= (state=initialState,action)=>{
                     return 1
                 }
                 return 0
-            }) : state.allRecipes
-            return{
-                ...state,
-                recipes: sortedArrTitle,
-                page: 1,
-            }
-
-        case FILTER_BY_PUNTUATION:
-            let sortedArrPuntuation = action.payload === 'asc'? state.allRecipes.sort(function(a,b){
+            }) : action.payload === 'asc' ? state.allRecipes.sort(function(a,b){
                 if( a.spoonacularScore > b.spoonacularScore){
                     return 1
                 }
@@ -63,7 +55,7 @@ const rootReducer= (state=initialState,action)=>{
                     return -1
                 }
                 return 0
-            }) : action.payload ==='des' ? state.allRecipes.sort(function(a,b){
+            }): action.payload === 'des' ? state.allRecipes.sort(function(a,b){
                 if (a.spoonacularScore > b.spoonacularScore){
                     return -1
                 }
@@ -71,12 +63,38 @@ const rootReducer= (state=initialState,action)=>{
                     return 1
                 }
                 return 0
-            }) : state.allRecipes
+            }):state.allRecipes
             return{
                 ...state,
-                recipes: sortedArrPuntuation,
+                recipes: sortedArrTitle,
+                filter: action.payload,
                 page: 1,
             }
+
+        // case FILTER_BY_PUNTUATION:
+        //     let sortedArrPuntuation = action.payload === 'asc'? state.allRecipes.sort(function(a,b){
+        //         if( a.spoonacularScore > b.spoonacularScore){
+        //             return 1
+        //         }
+        //         if(a.spoonacularScore < b.spoonacularScore){
+        //             return -1
+        //         }
+        //         return 0
+        //     }) : action.payload ==='des' ? state.allRecipes.sort(function(a,b){
+        //         if (a.spoonacularScore > b.spoonacularScore){
+        //             return -1
+        //         }
+        //         if (a.spoonacularScore < b.spoonacularScore){
+        //             return 1
+        //         }
+        //         return 0
+        //     }) : state.allRecipes
+        //     return{
+        //         ...state,
+        //         recipes: sortedArrPuntuation,
+        //         filter: action.payload,
+        //         page: 1,
+        //     }
 
         case GET_SEARCH_RECIPE:
             return{

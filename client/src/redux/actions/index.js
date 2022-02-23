@@ -1,4 +1,4 @@
-import { CURRENT_FILTER, CURRENT_PAGE, FILTER_BY_DIET, FILTER_BY_PUNTUATION, FILTER_BY_TITLE, GET_ALL_DIETS, GET_ALL_RECIPES, GET_RECIPE, GET_SEARCH_RECIPE } from "../constant";
+import { CURRENT_FILTER, CURRENT_PAGE, FILTER_SORT, FILTER_BY_DIET, GET_ALL_DIETS, GET_ALL_RECIPES, GET_RECIPE, GET_SEARCH_RECIPE } from "../constant";
 import axios from 'axios'
 
 export function getAllRecipes() {
@@ -31,19 +31,14 @@ export function getRecipe(id){
     }
 }
 
-export function filterByTitle(payload){
+export function filterSort(payload){
     return({
-        type: FILTER_BY_TITLE,
+        type: FILTER_SORT,
         payload
     })
 }
 
-export function filterByPuntuation(payload){
-    return ({
-        type: FILTER_BY_PUNTUATION,
-        payload
-    })
-}
+
 
 export function getRecipeSearch(search){
     return async function(dispatch){
