@@ -81,3 +81,10 @@ export function cleanRecipe(){
         type:CLEAN_RECIPE
     }
 }
+
+export function postRecipe(payload){
+    return async function(dispatch){
+        const recipe = await axios.post('http://localhost:3001/recipe',payload)
+        return recipe
+    }
+}

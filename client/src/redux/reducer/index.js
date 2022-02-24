@@ -1,4 +1,4 @@
-import { CLEAN_RECIPE, CURRENT_FILTER, CURRENT_PAGE, FILTER_BY_DIET, FILTER_SORT, GET_ALL_DIETS, GET_ALL_RECIPES, GET_RECIPE, GET_SEARCH_RECIPE } from "../constant";
+import { CLEAN_RECIPE, CURRENT_FILTER, CURRENT_PAGE, FILTER_BY_DIET, FILTER_SORT, GET_ALL_DIETS, GET_ALL_RECIPES, GET_RECIPE, GET_SEARCH_RECIPE, POST_NEW_RECIPE } from "../constant";
 
 const initialState={
     recipes:[],
@@ -114,10 +114,16 @@ const rootReducer= (state=initialState,action)=>{
                     ...state,
                     filter: action.payload
                 }
+
             case CLEAN_RECIPE:
                 return{
                     ...state,
                     recipe:[]
+                }
+            
+            case POST_NEW_RECIPE:
+                return{
+                ...state
                 }
         default:
             return state

@@ -66,6 +66,25 @@ router.get('/recipes',async (req,res)=>{
     }
 })
 
+router.post('/recipe',async (req,res)=>{
+    const {title ,summary,spoonacularScore,healtscore,analyzedInstructions,diets} = req.body
+    const recipe = await Recipe.create({
+        title,
+        summary,
+        spoonacularScore,
+        healtscore,
+        analyzedInstructions,
+    })
+    
+    let dietsInDb = await Diet.findAll({
+        wher: {title : diets}
+    })
+
+    recipe.addDiet(dietsInDb)
+    
+    res.send(recipe)
+})
+
 router.get('/recipes/:idReceta', async(req,res)=>{
     const id = req.params.idReceta;
     const recipes = await allInfo();
