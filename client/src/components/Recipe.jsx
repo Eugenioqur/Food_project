@@ -23,26 +23,33 @@ useEffect(()=>{
 },[])
 
 let showRecipe = []
-
-//if(load){
-    if(recipe.analyzedInstructions !== undefined){
-        if(Array.isArray(recipe.analyzedInstructions)){
-            let steps=[]
-            recipe.analyzedInstructions.forEach((e)=>{
-                steps.push(e)
+if(recipe.analyzedInstructions !== undefined){
+    if(Array.isArray(recipe.analyzedInstructions)){
+        let steps=[]
+        recipe.analyzedInstructions.forEach((e)=>{
+            steps.push(e)
+        })
+        if(steps.length >= 1){
+            steps.forEach((e)=>{
+                 showRecipe.push(e)
             })
-            if(steps.length >= 1){
-                steps.forEach((e)=>{
-                    showRecipe.push(e)
-                })
-            }
-        }
-        else{
-            showRecipe = [...showRecipe,{steps:[{step: recipe.analyzedInstructions}]}]
         }
     }
-//}
-console.log(recipe)
+    else{
+        showRecipe = [...showRecipe,{steps:[{step: recipe.analyzedInstructions}]}]
+     }
+}
+
+let arrDiet =[]
+let showDiet =[]
+if(recipe.diets !== undefined){
+    if(typeof(recipe.diets[0]) === 'object'){
+        arrDiet = recipe.diets.flatMap((e)=>e.title+', ')
+    }else {
+        arrDiet = recipe.diets.map((e)=>e+', ')
+    }
+    showDiet = arrDiet
+}
 
     return(
         <div>
@@ -50,7 +57,7 @@ console.log(recipe)
             <div>
                 <h1>{recipe.title}</h1>
                 <img src={recipe.image} alt="image not found" />
-                {/* <p>{recipe.diets}</p> */}
+                <p>{showDiet}</p>
                 <div dangerouslySetInnerHTML={{__html: recipe.summary}}/>
                 <p>{recipe.spoonacularScore}</p>
                 <p>{recipe.healthScore}</p>
