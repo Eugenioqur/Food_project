@@ -26,6 +26,8 @@ export default function Create(){
     const [err,setErr] = useState('')
     const [arrDiet,setArrDiet] = useState('')
 
+    let aNumber = /\d/
+
     function controller(){
         if(input.title === ''){
             return 'title'
@@ -35,8 +37,12 @@ export default function Create(){
             return 'instruction'
         }else if(input.spoonacularScore === ''){
             return 'score'
-        }else if(input.healthScore === ''){
+        }else if(!aNumber.test(input.spoonacularScore) || input.spoonacularScore > 100 || input.spoonacularScore < 1 ){
+            return 'scoreNum'
+        } else if(input.healthScore === ''){
             return 'healtscore'
+        }else if(!aNumber.test(input.healthScore) || input.healthScore > 100 || input.healthScore < 1 ){
+            return 'scoreHealth'
         }else if(!input.diets.length){
             return 'diet'
         }else{
@@ -78,9 +84,15 @@ export default function Create(){
         }else if(check === 'score'){
             let score = 'Assign a Score'
             setErr(score)
+        }else if(check === 'scoreNum'){
+            let scoreNum = 'Score must be a number between 1 and 100'
+            setErr(scoreNum)
         }else if(check === 'healtscore'){
             let healtscore = 'Assign a Healtscore'
             setErr(healtscore)
+        }else if(check === 'scoreHealth'){
+            let scoreHealth = 'Healthscoore must be a number between 1 and 100'
+            setErr(scoreHealth)
         }else if(check === 'diet'){
             let diet = 'Assign a Diet'
             setErr(diet)
