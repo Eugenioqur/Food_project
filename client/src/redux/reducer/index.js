@@ -7,6 +7,7 @@ const initialState={
     diets:[],
     filter:'',
     page: 1,
+    load:false
 }
 
 const rootReducer= (state=initialState,action)=>{
@@ -27,7 +28,8 @@ const rootReducer= (state=initialState,action)=>{
         case GET_RECIPE:
             return{
                 ...state,
-                recipe: action.payload
+                recipe: action.payload,
+                load:true
             }
 
         case FILTER_SORT:
@@ -118,7 +120,8 @@ const rootReducer= (state=initialState,action)=>{
             case CLEAN_RECIPE:
                 return{
                     ...state,
-                    recipe:[]
+                    recipe:[],
+                    load:false
                 }
             
             case POST_NEW_RECIPE:

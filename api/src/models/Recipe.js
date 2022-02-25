@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
     spoonacularScore:{
       type: DataTypes.INTEGER,
     },
-    healtscore:{
+    healthScore:{
       type: DataTypes.INTEGER,
     },
     analyzedInstructions:{

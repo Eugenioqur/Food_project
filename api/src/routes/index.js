@@ -67,17 +67,17 @@ router.get('/recipes',async (req,res)=>{
 })
 
 router.post('/recipe',async (req,res)=>{
-    const {title ,summary,spoonacularScore,healtscore,analyzedInstructions,diets} = req.body
+    const {title ,summary,spoonacularScore,healthScore,analyzedInstructions,diets} = req.body
     const recipe = await Recipe.create({
         title,
         summary,
         spoonacularScore,
-        healtscore,
+        healthScore,
         analyzedInstructions,
     })
     
     let dietsInDb = await Diet.findAll({
-        wher: {title : diets}
+        where: {title : diets}
     })
 
     recipe.addDiet(dietsInDb)

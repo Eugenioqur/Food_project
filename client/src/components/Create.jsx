@@ -19,7 +19,7 @@ export default function Create(){
         summary:'',
         analyzedInstructions:'',
         spoonacularScore:'',
-        healtscore:'',
+        healthScore:'',
         diets:[]
     })
 
@@ -35,7 +35,7 @@ export default function Create(){
             return 'instruction'
         }else if(input.spoonacularScore === ''){
             return 'score'
-        }else if(input.healtscore === ''){
+        }else if(input.healthScore === ''){
             return 'healtscore'
         }else if(!input.diets.length){
             return 'diet'
@@ -45,10 +45,11 @@ export default function Create(){
     }
 
     function handleChange(e){
-        setInput({
-            ...input,
-            [e.target.name]: e.target.value
-        })
+        
+            setInput({
+                ...input,
+                [e.target.name]: e.target.value
+            })
     }
 
     function handleSelect(e){
@@ -91,7 +92,7 @@ export default function Create(){
                 summary:'',
                 analyzedInstructions:'',
                 spoonacularScore:'',
-                healtscore:'',
+                healthScore:'',
                 diets:[]
             })
             alert('yeahhhh')
@@ -123,7 +124,7 @@ export default function Create(){
                 </div>
                 <div>
                     <label>Healtscoore</label>
-                    <input type="text" value={input.healtscore} name='healtscore' placeholder='Healt Scoore' onChange={(e)=>handleChange(e)}/>
+                    <input type="text" value={input.healthScore} name='healthScore' placeholder='Healt Scoore' onChange={(e)=>handleChange(e)}/>
                 </div>
                 <div>
                     <label>Diets</label>

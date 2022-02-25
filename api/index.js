@@ -24,26 +24,8 @@ const { conn } = require('./src/db.js');
 const { Diet } = require('./src/db')
 
 
-
-
-
-// const upDiet= async ()=>{
-//   const diets = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.API_KEY}&addRecipeInformation=true&number=100`);
-//   const dieta = await diets.data.map(e =>{
-//     const die = await Diet.create({
-//       title: e.diets
-//     })
-//   })
-// }
-
-
-
-
-
-
-
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
