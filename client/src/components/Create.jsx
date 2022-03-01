@@ -115,9 +115,9 @@ export default function Create(){
     
 
     return(
-        <div className={s.ev}>
+        <div className={s.body}>
             <form onSubmit={(e)=>handleSubmit(e)}>
-                <h1>Create new recipe</h1>
+                <h1 className={s.title}>Create new recipe</h1>
             <div className={s.conteiner}>
                     <div className={s.short}>
                         <div>
@@ -141,6 +141,10 @@ export default function Create(){
                                 ))}
                             </select>
                         </div>
+                        <p></p>
+                        {err && (<div className={s.error}>{err}</div>)}
+                        <button className={s.button} type='submit'>Submit</button>
+                        <Link to='/home'><button className={s.button} >Home</button></Link>
                     </div>
                     <div className={s.long}>
                             <label>Summary</label>
@@ -156,10 +160,8 @@ export default function Create(){
                     
 
             </div>
-                    {err && (<div className={s.error}>{err}</div>)}
-                    <button className={s.button} type='submit'>Submit</button>
-                    <Link to='/home'><button className={s.button} >Home</button></Link>
             </form>
+            <p></p>
         </div>
     )
 }
