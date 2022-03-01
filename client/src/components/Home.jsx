@@ -34,15 +34,10 @@ const currentRecipes = allRecipes.slice(indexOfFirstRecipe,indexOfLastRecipe)
     return(
         <div>
             <NavBar/>
-            <Paginated 
-            allRecipes= {allRecipes.length}
-            recipesPerPage={recipesPerPage}
-            pag={pag}
-            />
             <div className={s.grid}>
                 {currentRecipes&&currentRecipes.map(e =>{
                     return(
-                        <NavLink to={`/recipes/${e.id}`}>
+                        <NavLink className={s.card} to={`/recipes/${e.id}`}>
                             <Card
                             key= {e.id}
                             title= {e.title}

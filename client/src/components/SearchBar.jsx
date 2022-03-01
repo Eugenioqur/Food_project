@@ -26,7 +26,7 @@ function handleSubmit(e){
 
     return(
         <div>
-            <input type="text"  placeholder="Search..." value={search.search} onChange={(e)=>handleChange(e)}/>
+            <input className={s.input}type="text"  placeholder="Search..." value={search.search} onChange={(e)=>handleChange(e)}/>
             <button type="submit" className={s.button} onClick={(e)=>handleSubmit(e)}>Search</button>
         </div>
         )

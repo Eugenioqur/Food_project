@@ -32,11 +32,11 @@ function handleFilterByDiet(e){
 
     return(
         <div className={s.conteiner}>
-            <Link to='/create'><button className={s.button}>Create</button></Link>
+            <Link to='/create'><button className={s.button}>Create New Recipe</button></Link>
             <SearchBar/>
 
             <div>
-                <select onChange = {e => handleSort(e)}>
+                <select className={s.select} onChange = {e => handleSort(e)}>
                     <option value="des">downward</option>
                     <option value="asc">ascendant</option>
                     <option value="az">A-Z</option>
@@ -45,7 +45,7 @@ function handleFilterByDiet(e){
                 </select>
             </div>
             
-            <select onChange={e => handleFilterByDiet(e)}>
+            <select className={s.select} onChange={e => handleFilterByDiet(e)}>
                 <option value=""></option>
                 {
                     allDiets.map((e)=>(

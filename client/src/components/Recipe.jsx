@@ -70,7 +70,8 @@ if(recipe.diets !== undefined){
                         <h2>Summary</h2>
                         <div dangerouslySetInnerHTML={{__html: recipe.summary}}/>
                     </div>
-                    {showRecipe.length >=1 ? showRecipe[0].steps.map((e)=>(
+                    {showRecipe.length >=1 && (<h2>Recipe:</h2>)}
+                    {showRecipe.length >=1 ?showRecipe[0].steps.map((e)=>(
                     <p>{e.step}</p>
                     )) :<p>Recipe is not available</p>} 
                 </div>

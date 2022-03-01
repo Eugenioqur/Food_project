@@ -7,11 +7,21 @@
     padding-right: 14px;
     padding-left: 12px;
     font-size: 17px;
-   }
+}
    
-   .button:hover {
+.button:hover {
     background-color: #1abc9c;
     color: white;
     border: 1px solid  #1abc9c;
-   }
+}
    
+.input{
+    border: 1px solid #1abc9c;
+    border-radius: 5px;
+    background: #f2f3f4;
+    color: #1abc9c;
+    padding: 10px;
+    padding-right: 14px;
+    padding-left: 12px;
+    font-size: 17px;
+}

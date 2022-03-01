@@ -15,7 +15,7 @@ export default function Paginated({allRecipes,recipesPerPage,pag}){
                 {
                     pageNumbers && pageNumbers.map(n=>(
                         <li className={s.list} key ={n}>
-                            <button onClick={()=> pag(n)}>{n}</button>
+                            <button className={s.button} onClick={()=> pag(n)}>{n}</button>
                         </li>
                     ))
                 }

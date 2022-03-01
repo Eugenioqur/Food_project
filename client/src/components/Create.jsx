@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDiets, postRecipe } from "../redux/actions";
 
+import s from './css/Create.module.css'
+
 export default function Create(){
     const dispatch = useDispatch()
     const allDiets = useSelector((state)=> state.diets)
@@ -113,44 +115,50 @@ export default function Create(){
     
 
     return(
-        <div>
-            <h1>Create recipes</h1>
-
+        <div className={s.ev}>
             <form onSubmit={(e)=>handleSubmit(e)}>
-                
-                <div>
-                    <label>Title</label>
-                    <input type="text" value={input.title} name='title' placeholder='Title...' onChange={(e)=>handleChange(e)}/>
-                </div>
-                <div>
-                    <label>Summary</label>
-                    <input type="text" value={input.summary} name='summary' placeholder='Summary' onChange={(e)=>handleChange(e)}/>
-                </div>
-                <div>
-                    <label>Instructions</label>
-                    <input type="text" value={input.analyzedInstructions} name='analyzedInstructions'placeholder='instructions' onChange={(e)=>handleChange(e)}/>
-                </div>
-                <div>
-                    <label>Puntuation</label>
-                    <input type="text" value={input.spoonacularScore} name='spoonacularScore' placeholder='Puntuation' onChange={(e)=>handleChange(e)}/>
-                </div>
-                <div>
-                    <label>Healtscoore</label>
-                    <input type="text" value={input.healthScore} name='healthScore' placeholder='Healt Scoore' onChange={(e)=>handleChange(e)}/>
-                </div>
-                <div>
-                    <label>Diets</label>
-                    <select onChange={(e)=> handleSelect(e) }>
-                        <option> </option>
-                        {allDiets.map((e)=>(
-                            <option value={e.title}>{e.title}</option>
-                        ))}
-                    </select>
-                </div>
-                
-                {err && (<div>{err}</div>)}
-                <button type='submit'>Submit</button>
-                <Link to='/home'><button>Home</button></Link>
+                <h1>Create new recipe</h1>
+            <div className={s.conteiner}>
+                    <div className={s.short}>
+                        <div>
+                            <label>Title</label>
+                            <input className={s.inputS} type="text" value={input.title} name='title' placeholder='Title...' onChange={(e)=>handleChange(e)}/>
+                        </div>
+                        <div>
+                            <label>Puntuation</label>
+                            <input className={s.inputS} type="text" value={input.spoonacularScore} name='spoonacularScore' placeholder='Puntuation' onChange={(e)=>handleChange(e)}/>
+                        </div>
+                        <div>
+                            <label>Healtscoore</label>
+                            <input className={s.inputS} type="text" value={input.healthScore} name='healthScore' placeholder='Healt Scoore' onChange={(e)=>handleChange(e)}/>
+                        </div>
+                        <div>
+                            <label>Diets</label>
+                            <select className={s.select} onChange={(e)=> handleSelect(e) }>
+                                <option> </option>
+                                {allDiets.map((e)=>(
+                                    <option value={e.title}>{e.title}</option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                    <div className={s.long}>
+                            <label>Summary</label>
+                        <div>
+                            <textarea className={s.inputL} value={input.summary} name='summary' placeholder="Summary" cols="30" rows="10"onChange={(e)=>handleChange(e)}/>
+                            {/* <input  className={s.inputL} type="text" value={input.summary} name='summary' placeholder='Summary' onChange={(e)=>handleChange(e)}/> */}
+                        </div>
+                            <label>Instructions</label>
+                        <div>
+                            <textarea className={s.inputL} type="text" value={input.analyzedInstructions} name="analyzedInstructions" placeholder='instructions' cols="30" rows="10" onChange={(e)=>handleChange(e)}/>
+                        </div>
+                    </div>
+                    
+
+            </div>
+                    {err && (<div className={s.error}>{err}</div>)}
+                    <button className={s.button} type='submit'>Submit</button>
+                    <Link to='/home'><button className={s.button} >Home</button></Link>
             </form>
         </div>
     )
