@@ -1,12 +1,14 @@
 import React from "react";
 import { useState,useEffect } from "react";
 import { useDispatch,useSelector } from 'react-redux'
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import {getAllRecipes ,currentPage} from "../redux/actions";
 import Card from "./Card";
 import Paginated from "./Paginated";
 import NavBar from "./NavBar";
+
+import s from './css/Home.module.css'
 
 export default function Home(){
 
@@ -31,24 +33,23 @@ const currentRecipes = allRecipes.slice(indexOfFirstRecipe,indexOfLastRecipe)
 
     return(
         <div>
-            <h1>This is Home</h1>
             <NavBar/>
             <Paginated 
             allRecipes= {allRecipes.length}
             recipesPerPage={recipesPerPage}
             pag={pag}
             />
-            <div>
+            <div className={s.grid}>
                 {currentRecipes&&currentRecipes.map(e =>{
                     return(
-                        <Link to={`/recipes/${e.id}`}>
+                        <NavLink to={`/recipes/${e.id}`}>
                             <Card
                             key= {e.id}
                             title= {e.title}
                             image= {e.image}
                             diets={e.diets}
                             />
-                        </Link>
+                        </NavLink>
                     )
                 })}
             </div>

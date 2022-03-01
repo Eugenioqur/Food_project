@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 
 import { Link, useParams } from "react-router-dom";
 
 import { cleanRecipe, getRecipe } from "../redux/actions";
+import s from './css/Recipe.module.css'
 
 export default function Recipe(){
 
@@ -16,9 +17,6 @@ const {idReceta} = useParams()
 
 useEffect(()=>{
     dispatch(getRecipe(idReceta))
-},[])
-
-useEffect(()=>{
     return () => dispatch(cleanRecipe())
 },[])
 
@@ -48,23 +46,35 @@ if(recipe.diets !== undefined){
     }else {
         arrDiet = recipe.diets.map((e)=>e+', ')
     }
+    if(arrDiet.length >= 1){
+        arrDiet[arrDiet.length-1] = arrDiet[arrDiet.length-1].slice(0,-2)
+   }
     showDiet = arrDiet
 }
 
     return(
         <div>
             {load ?
-            <div>
-                <h1>{recipe.title}</h1>
-                <img src={recipe.image} alt="image not found" />
-                <p>{showDiet}</p>
-                <div dangerouslySetInnerHTML={{__html: recipe.summary}}/>
-                <p>{recipe.spoonacularScore}</p>
-                <p>{recipe.healthScore}</p>
-                {showRecipe.length >=1 ? showRecipe[0].steps.map((e)=>(
-                <p>{e.step}</p>
-                )) :<p>Recipe is not available</p>} 
-                <Link to='/home'><button>Home</button></Link>
+            <div className={s.conteiner}>
+                <div className={s.card}>
+                    <img src={recipe.image} alt="image not found" />
+                    <p>{showDiet}</p>
+                    <p><b>Score:</b>{recipe.spoonacularScore}</p>
+                    <p><b>Health Score:</b>{recipe.healthScore}</p>
+                    <Link to='/home'><button className={s.button}>Home</button></Link>
+                </div>
+
+                <div className={s.text}>
+                    <h1>{recipe.title}</h1>
+                    <div className={s.summary}>
+                        <h2>Summary</h2>
+                        <div dangerouslySetInnerHTML={{__html: recipe.summary}}/>
+                    </div>
+                    {showRecipe.length >=1 ? showRecipe[0].steps.map((e)=>(
+                    <p>{e.step}</p>
+                    )) :<p>Recipe is not available</p>} 
+                </div>
+
             </div> 
             : <p>loading</p> }
 

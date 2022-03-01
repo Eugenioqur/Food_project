@@ -3,6 +3,7 @@ import {useState} from 'react'
 import {useDispatch} from 'react-redux'
 
 import { getRecipeSearch } from "../redux/actions";
+import s from './css/SearchBar.module.css'
 
 export default function SearchBar(){
 const dispatch = useDispatch()
@@ -26,7 +27,7 @@ function handleSubmit(e){
     return(
         <div>
             <input type="text"  placeholder="Search..." value={search.search} onChange={(e)=>handleChange(e)}/>
-            <button type="submit" onClick={(e)=>handleSubmit(e)}>Search</button>
+            <button type="submit" className={s.button} onClick={(e)=>handleSubmit(e)}>Search</button>
         </div>
         )
 }

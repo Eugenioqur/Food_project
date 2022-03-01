@@ -1,11 +1,23 @@
-body{
-    background-color: #f2f3f4;
+.conteiner{
+    display: flex;
+    font-family: fantasy;
 }
 
-.conteiner{
-    background-color:  #1abc9c;
-    font-family: fantasy;
-    font-size: 38px;
+.text{
+    padding: 3%;
+}
+
+.summary{
+    background-color: #1abc9c93;   
+}
+.card{
+    padding: 1%;
+    margin-top: 3%;
+    margin-left: 0.5%;
+    width: 25%;
+    height: 100%;
+    background-color: #1abc9c;
+    border-radius: 15px ;
 }
 
 .button {
@@ -16,13 +28,11 @@ body{
     padding: 10px;
     padding-right: 14px;
     padding-left: 12px;
-    font-family: fantasy;
     font-size: 17px;
-   }
+}
    
-   .button:hover {
+.button:hover {
     background-color: #1abc9c;
     color: white;
     border: 1px solid  #1abc9c;
-   }
-   
+}

@@ -1,5 +1,7 @@
 import React from "react";
 
+import s from './css/Card.module.css'
+
 export default function Card({title,image,diets}){
 
     let arrDiet =[]
@@ -10,14 +12,19 @@ export default function Card({title,image,diets}){
         }else {
             arrDiet = diets.map((e)=>e+', ')
         }
+        if(arrDiet.length >= 1){
+             arrDiet[arrDiet.length-1] = arrDiet[arrDiet.length-1].slice(0,-2)
+        }
         showDiet = arrDiet
     }
 
     return(
-        <div>
-            <h1>{title}</h1>
-            <img src={image} alt="no hay foto bro" />
-            <p>{showDiet}</p>
+        <div className={s.conteiner}>
+            <img className={s.image} src={image} alt="no hay foto bro" />
+            <div className={s.text}>
+                <h1>{title}</h1>
+                <p className={s.diet} >{showDiet}</p>
+            </div>
         </div>
     )
 }
