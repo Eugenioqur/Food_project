@@ -8,7 +8,7 @@ body{
     background-origin:margin-box;
     margin: 0%;
     padding: 0%;
-    background-image: url('../images/landin.jpg');
+    background-image: url('../images/create.png');
     min-width: 100%;
     min-height: 100vh ;
     font-family: fantasy;
@@ -112,6 +112,7 @@ body{
 .title{
     margin-left: 40%;
     color:#f2f3f4;
+    color: black;
 }
 
 .error{
