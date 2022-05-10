@@ -60,8 +60,26 @@ body{
     border: 0.5px solid black;
 }
 
+
+.inputRL{
+    height: 100px;
+    width: 550px; 
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid black;
+    background-color:white;
+    font-size: 16px;
+  }
+  
+  .inputRL:focus{
+      /* background: -webkit-linear-gradient(top,  rgba(26,188,156,0.2) 0%,rgba(26,188,156,0.2) 60%,rgba(255,255,255,0.5) 100%); */
+      background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 69%,rgba(0,0,0,0.28) 100%);
+      border: 0.5px solid black;
+  }
 .inputL{
-  height: 230px;
+  height: 250px;
   width: 550px; 
   padding: 12px 20px;
   margin: 8px 0;
@@ -107,6 +125,25 @@ body{
     background-color: #1abc9c;
     color: #f2f3f4;
     border: 1px solid  #1abc9c;
+}
+
+.buttonD {
+    border: 1px solid #1abc9c;
+    border-radius: 5px;
+    background: #f2f3f4;
+    color: #1abc9c;
+    padding: 10px;
+    padding-right: 6px;
+    padding-left: 6px;
+    font-size: 15px;
+    margin-top: 0.2em;
+    margin-left:0.5em ;
+}
+   
+.buttonD:hover {
+    background-color: rgb(255, 123, 0);
+    color: #f2f3f4;
+    border: 1px solid  rgb(255, 123, 0);
 }
 
 .title{

@@ -112,6 +112,11 @@ export default function Create(){
             alert('Succes')
         }
     }
+
+    function handleQuit(e){
+        let diets = input.diets.filter(el =>  el !== e.target.value)
+        setInput({...input,diets})
+    }
     
 
     return(
@@ -147,9 +152,16 @@ export default function Create(){
                         <Link to='/home'><button className={s.button} >Home</button></Link>
                     </div>
                     <div className={s.long}>
+                            <label>Diets</label>
+                        <div>
+                            {input.diets &&input.diets.length ? input.diets.map(el=>(
+                                (<button className={s.buttonD} value={el} onClick={(e)=>handleQuit(e)} type='button'>{el}</button>)
+
+                            )):(<p></p>)}
+                        </div>
                             <label>Summary</label>
                         <div>
-                            <textarea className={s.inputL} value={input.summary} name='summary' placeholder="Summary" cols="30" rows="10"onChange={(e)=>handleChange(e)}/>
+                            <textarea className={s.inputRL} value={input.summary} name='summary' placeholder="Summary" cols="30" rows="10"onChange={(e)=>handleChange(e)}/>
                             {/* <input  className={s.inputL} type="text" value={input.summary} name='summary' placeholder='Summary' onChange={(e)=>handleChange(e)}/> */}
                         </div>
                             <label>Instructions</label>
