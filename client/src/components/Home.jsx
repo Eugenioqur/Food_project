@@ -16,8 +16,9 @@ const dispatch = useDispatch();
 const allRecipes = useSelector((state)=>state.recipes)
 const filter = useSelector((state)=>state.filter)
 
+
 const page= useSelector((state)=>state.page)
-const [recipesPerPage,setRecipesPerPage] = useState(9)
+const [recipesPerPage,setRecipesPerPage] = useState(8)
 const indexOfLastRecipe = page * recipesPerPage 
 const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage
 const currentRecipes = allRecipes.slice(indexOfFirstRecipe,indexOfLastRecipe)
@@ -35,7 +36,7 @@ const currentRecipes = allRecipes.slice(indexOfFirstRecipe,indexOfLastRecipe)
         <div>
             <NavBar/>
             <div className={s.grid}>
-                {currentRecipes&&currentRecipes.map(e =>{
+                {currentRecipes[0]&&currentRecipes[0].errors !== undefined ?(<h1>No results for: {currentRecipes[0].errors} </h1>) : currentRecipes.map(e =>{
                     return(
                         <NavLink className={s.card} to={`/recipes/${e.id}`}>
                             <Card
@@ -52,6 +53,7 @@ const currentRecipes = allRecipes.slice(indexOfFirstRecipe,indexOfLastRecipe)
             allRecipes= {allRecipes.length}
             recipesPerPage={recipesPerPage}
             pag={pag}
+            page={page}
             />
         </div>
     )

@@ -48,8 +48,12 @@ export function getRecipeSearch(search){
                 type:GET_SEARCH_RECIPE,
                 payload:json.data
             })
-        } catch(error){
+        } catch (error){
             console.log(error)
+            return dispatch({
+                type:GET_SEARCH_RECIPE,
+                payload:[{errors:search}]
+            })
         }
     }
     

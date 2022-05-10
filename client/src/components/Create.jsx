@@ -109,7 +109,7 @@ export default function Create(){
                 healthScore:'',
                 diets:[]
             })
-            alert('yeahhhh')
+            alert('Succes')
         }
     }
     
