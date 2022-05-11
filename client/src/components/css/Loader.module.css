@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    left: 45%;
+    top: 15px;
+    margin-top: 15px;
+}
+
+.image{
+  width: 160px;
+  height: 160px;
+  padding-top: 40px;
+}
+
+.text{
+  position: static;
+  height: 45px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 140%;
+  text-align: center;
+  color: #151515;
+  padding-top: 15px;
+  padding-left: 15px
+}

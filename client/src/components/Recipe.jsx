@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 
 import { cleanRecipe, getRecipe } from "../redux/actions";
 import s from './css/Recipe.module.css'
+import Loader from "./Loader";
 
 export default function Recipe(){
 
@@ -77,7 +78,7 @@ if(recipe.diets !== undefined){
                 </div>
 
             </div> 
-            : <p>loading</p> }
+            : <Loader/> }
 
         </div>
     )
