@@ -59,7 +59,7 @@ export default function Paginated({allRecipes,recipesPerPage,pag,page}){
                 }
                 
             {page < Math.ceil((allRecipes/recipesPerPage)) ? (<li className={s.list}><button className={s.button}  onClick={()=> pag(page+1)}>+</button></li>) :(<li className={s.list}><p></p></li>) }
-            {page < (Math.ceil((allRecipes/recipesPerPage))-1) && 3>= Math.ceil((allRecipes/recipesPerPage)) ? (<li className={s.list}><button className={s.button}  onClick={()=> pag(Math.ceil((allRecipes/recipesPerPage)))}>Last Page</button></li>) :(<li className={s.list}><p></p></li>) }
+            {page < (Math.ceil((allRecipes/recipesPerPage))-1) && 4<= Math.ceil((allRecipes/recipesPerPage)) ? (<li className={s.list}><button className={s.button}  onClick={()=> pag(Math.ceil((allRecipes/recipesPerPage)))}>Last Page</button></li>) :(<li className={s.list}><p></p></li>) }
             </ul>
         </div>
     )
