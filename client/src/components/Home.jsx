@@ -1,5 +1,5 @@
 import React from "react";
-import { useState,useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch,useSelector } from 'react-redux'
 import { NavLink } from "react-router-dom";
 
@@ -18,7 +18,7 @@ const filter = useSelector((state)=>state.filter)
 
 
 const page= useSelector((state)=>state.page)
-const [recipesPerPage,setRecipesPerPage] = useState(8)
+const recipesPerPage = 8
 const indexOfLastRecipe = page * recipesPerPage 
 const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage
 const currentRecipes = allRecipes.slice(indexOfFirstRecipe,indexOfLastRecipe)
